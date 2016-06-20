@@ -5,10 +5,12 @@ RUN powershell -command \
   New-Item -Path C:\Temp -ItemType Directory; \
   wget -Uri https://github.com/OrchardCMS/Orchard/releases/download/1.10.1/Orchard.Web.zip -OutFile C:\temp\Orchard.Web.zip; \
   Expand-Archive -Path C:\temp\Orchard.Web.zip -DestinationPath C:\inetpub\wwwroot; \
-  Remove-Item -Path C:\temp\Orchard.Web.zip
-CMD C:\\Windows\\System32\\icacls.exe C:\\inetpub\\wwwroot\\Orchad\\App_Data /grant IIS_IUSRS:(OI)(CI)(M)
-CMD C:\\Windows\\System32\\icacls.exe C:\\inetpub\\wwwroot\\Orchad\\Modules /grant IIS_IUSRS:(OI)(CI)(M)
-CMD C:\\Windows\\System32\\icacls.exe C:\\inetpub\\wwwroot\\Orchad\\Media /grant IIS_IUSRS:(OI)(CI)(M)
-CMD C:\\Windows\\System32\\icacls.exe C:\\inetpub\\wwwroot\\Orchad\\Themes /grant IIS_IUSRS:(OI)(CI)(M)
-CMD iisreset
+  Remove-Item -Path C:\temp\Orchard.Web.zip; \
+  Remove-Website -Name 'Default Web Site' ; \
+  New-Website -Name Orchard -Port 80 -PhysicalPath C:\inetpub\wwwroot\Orchard; \
+  C:\Windows\System32\icacls.exe C:\inetpub\wwwroot\Orchard\App_Data /grant IIS_IUSRS:`(OI`)`(CI`)F /T; \
+  C:\Windows\System32\icacls.exe C:\inetpub\wwwroot\Orchard\Modules /grant IIS_IUSRS:`(OI`)`(CI`)F /T; \
+  C:\Windows\System32\icacls.exe C:\inetpub\wwwroot\Orchard\Media /grant IIS_IUSRS:`(OI`)`(CI`)F /T; \
+  C:\Windows\System32\icacls.exe C:\inetpub\wwwroot\Orchard\Themes /grant IIS_IUSRS:`(OI`)`(CI`)F /T; \
+  iisreset
 EXPOSE 80
