@@ -1,4 +1,4 @@
-docker run --name sqlserver -p 1433:1433 --env sa_password='Password123' -d microsoft/mssql-server-2014-express-windows
+docker run --name sqlserver -p 1433:1433 --env sa_password='Password123' -d microsoft/mssql-server-2014-express-windows:dbfee88ee9fd
 
 docker run --name mysql -p 3306:3306 -d microsoft/sample-mysql ping -t localhost
 
