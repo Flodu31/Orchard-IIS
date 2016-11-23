@@ -16,6 +16,6 @@ docker inspect -f "{{ .NetworkSettings.Networks.nat.IPAddress }}" orchard
 Connect to this IP address with a browser.
 Change the Datasource to SQL Express and provide this connection string:
 ```
-Data Source=sqlserver;Initial Catalog=Orchard;User ID=sa;Password=Florentdu31!;
+Data Source=sqlserver;Initial Catalog=Orchard;User ID=sa;Password=Password31!;
 ```
 Save and see the result :)
