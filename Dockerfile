@@ -1,4 +1,4 @@
-FROM microsoft/iis
+FROM microsoft/iis:latest
 MAINTAINER Florent APPOINTAIRE <florent.appointaire@gmail.com>
 RUN powershell -command \
   Install-WindowsFeature Web-Asp-Net45,Web-Net-Ext45; \
